@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" fill="none">
+  <rect width="640" height="380" fill="#121216"/>
+  <pattern id="grid-xl" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M 24 0 L 0 0 0 24" stroke="#1E1E26" stroke-width="1"/>
+  </pattern>
+  <rect width="640" height="380" fill="url(#grid-xl)"/>
+  <rect x="28" y="24" width="584" height="332" rx="14" fill="#19191F" stroke="#303038" stroke-width="1.5"/>
+  <rect x="28" y="24" width="584" height="38" rx="14" fill="#1E1E26"/>
+  <path d="M28 62H612" stroke="#303038" stroke-width="1"/>
+  <circle cx="50" cy="43" r="4.5" fill="#FF5722"/>
+  <circle cx="66" cy="43" r="4.5" fill="#303038"/>
+  <circle cx="82" cy="43" r="4.5" fill="#303038"/>
+  <text x="104" y="47" fill="#A5A5AE" font-family="monospace" font-size="11">CONCEPT // E-COMMERCE &amp; COURSE MEMBERSHIP LOGIC</text>
+  <!-- Top Store Track -->
+  <rect x="52" y="84" width="256" height="114" rx="10" fill="#121216" stroke="#303038"/>
+  <text x="68" y="106" fill="#FF7043" font-family="monospace" font-size="10">E-COMMERCE CATALOG</text>
+  <rect x="68" y="120" width="106" height="60" rx="8" fill="#222229" stroke="#303038"/>
+  <text x="78" y="142" fill="#F5F5F2" font-family="sans-serif" font-size="11" font-weight="600">Categories</text>
+  <text x="78" y="160" fill="#A5A5AE" font-family="sans-serif" font-size="10">Fashion Store</text>
+  <rect x="184" y="120" width="108" height="60" rx="8" fill="#222229" stroke="#303038"/>
+  <text x="194" y="142" fill="#F5F5F2" font-family="sans-serif" font-size="11" font-weight="600">Cart Recovery</text>
+  <text x="194" y="160" fill="#A5A5AE" font-family="sans-serif" font-size="10">Abandoned Flow</text>
+  <!-- Bottom Membership Track -->
+  <rect x="52" y="212" width="536" height="118" rx="10" fill="#121216" stroke="#303038"/>
+  <text x="68" y="234" fill="#A5A5AE" font-family="monospace" font-size="10">COURSE ENROLLMENT &amp; ACCESS LIFECYCLE</text>
+  <rect x="68" y="250" width="144" height="62" rx="8" fill="#222229" stroke="#FF5722" stroke-opacity="0.7"/>
+  <text x="82" y="274" fill="#F5F5F2" font-family="sans-serif" font-size="11" font-weight="600">1. Grant Access</text>
+  <text x="82" y="292" fill="#A5A5AE" font-family="sans-serif" font-size="10">Welcome Email</text>
+  <path d="M214 281H250" stroke="#FF5722" stroke-width="1.8"/>
+  <rect x="252" y="250" width="144" height="62" rx="8" fill="#222229" stroke="#303038"/>
+  <text x="266" y="274" fill="#F5F5F2" font-family="sans-serif" font-size="11" font-weight="600">2. Access Timer</text>
+  <text x="266" y="292" fill="#A5A5AE" font-family="sans-serif" font-size="10">Duration Window</text>
+  <path d="M398 281H434" stroke="#73737D" stroke-width="1.8"/>
+  <rect x="436" y="250" width="136" height="62" rx="8" fill="#19191F" stroke="#303038"/>
+  <text x="450" y="274" fill="#F5F5F2" font-family="sans-serif" font-size="11" font-weight="600">3. Expiration</text>
+  <text x="450" y="292" fill="#73737D" font-family="sans-serif" font-size="10">Notice + Revoke</text>
+  <!-- Top Right Course Card -->
+  <rect x="326" y="84" width="262" height="114" rx="10" fill="#121216" stroke="#303038"/>
+  <text x="342" y="106" fill="#FF7043" font-family="monospace" font-size="10">DIGITAL COURSE PORTAL</text>
+  <rect x="342" y="122" width="230" height="16" rx="4" fill="#222229"/>
+  <rect x="342" y="146" width="180" height="12" rx="4" fill="#303038"/>
+  <rect x="342" y="166" width="110" height="18" rx="4" fill="#FF5722" fill-opacity="0.2" stroke="#FF5722" stroke-opacity="0.5"/>
+  <text x="352" y="178" fill="#FF7043" font-family="monospace" font-size="9">OFFER UNLOCKED</text>
+</svg>

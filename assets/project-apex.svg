@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" fill="none">
+  <rect width="640" height="380" fill="#121216"/>
+  <pattern id="grid-ax" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M 24 0 L 0 0 0 24" stroke="#1E1E26" stroke-width="1"/>
+  </pattern>
+  <rect width="640" height="380" fill="url(#grid-ax)"/>
+  <circle cx="510" cy="270" r="110" fill="#FF5722" fill-opacity="0.08"/>
+  <rect x="28" y="24" width="584" height="332" rx="14" fill="#19191F" stroke="#303038" stroke-width="1.5"/>
+  <rect x="28" y="24" width="584" height="38" rx="14" fill="#1E1E26"/>
+  <path d="M28 62H612" stroke="#303038" stroke-width="1"/>
+  <circle cx="50" cy="43" r="4.5" fill="#FF5722"/>
+  <circle cx="66" cy="43" r="4.5" fill="#303038"/>
+  <circle cx="82" cy="43" r="4.5" fill="#303038"/>
+  <text x="104" y="47" fill="#A5A5AE" font-family="monospace" font-size="11">CONCEPT // GROWTH READINESS 0-100 SCORING ENGINE</text>
+  <!-- Multi-Slide Survey -->
+  <rect x="52" y="84" width="204" height="148" rx="10" fill="#121216" stroke="#303038"/>
+  <text x="68" y="106" fill="#FF7043" font-family="monospace" font-size="10">MULTI-SLIDE SURVEY</text>
+  <rect x="68" y="120" width="172" height="28" rx="6" fill="#222229"/>
+  <text x="78" y="138" fill="#F5F5F2" font-family="sans-serif" font-size="10">Custom Answer Fields</text>
+  <rect x="68" y="156" width="172" height="28" rx="6" fill="#222229"/>
+  <text x="78" y="174" fill="#A5A5AE" font-family="sans-serif" font-size="10">Weighted Math Rules</text>
+  <text x="68" y="212" fill="#73737D" font-family="monospace" font-size="10">RANGE: 0 - 100 PTS</text>
+  <!-- Arrow -->
+  <path d="M258 158H292" stroke="#FF5722" stroke-width="2"/>
+  <polygon points="292,153 302,158 292,163" fill="#FF5722"/>
+  <!-- Grade Output Cards -->
+  <rect x="304" y="84" width="284" height="246" rx="10" fill="#121216" stroke="#303038"/>
+  <text x="322" y="106" fill="#A5A5AE" font-family="monospace" font-size="10">GRADE BRANCHING &amp; RESULT PAGES</text>
+  <rect x="322" y="122" width="248" height="54" rx="8" fill="#222229" stroke="#FF5722" stroke-opacity="0.75"/>
+  <text x="336" y="145" fill="#FF5722" font-family="monospace" font-size="12" font-weight="700">GRADE A</text>
+  <text x="410" y="145" fill="#F5F5F2" font-family="sans-serif" font-size="11" font-weight="600">High Readiness</text>
+  <text x="336" y="163" fill="#A5A5AE" font-family="sans-serif" font-size="10">Result Page A + Opportunity</text>
+
+  <rect x="322" y="186" width="248" height="54" rx="8" fill="#222229" stroke="#303038"/>
+  <text x="336" y="209" fill="#FF7043" font-family="monospace" font-size="12" font-weight="700">GRADE B</text>
+  <text x="410" y="209" fill="#F5F5F2" font-family="sans-serif" font-size="11" font-weight="600">Moderate Readiness</text>
+  <text x="336" y="227" fill="#A5A5AE" font-family="sans-serif" font-size="10">Result Page B + Guided Flow</text>
+
+  <rect x="322" y="250" width="248" height="54" rx="8" fill="#19191F" stroke="#303038"/>
+  <text x="336" y="273" fill="#A5A5AE" font-family="monospace" font-size="12" font-weight="700">GRADE C</text>
+  <text x="410" y="273" fill="#F5F5F2" font-family="sans-serif" font-size="11" font-weight="600">Foundation Stage</text>
+  <text x="336" y="291" fill="#73737D" font-family="sans-serif" font-size="10">Result Page C + Nurture</text>
+
+  <!-- Bottom Math Box -->
+  <rect x="52" y="246" width="204" height="84" rx="10" fill="#222229" stroke="#303038"/>
+  <text x="68" y="270" fill="#FF7043" font-family="monospace" font-size="10">WORKFLOW ACTION</text>
+  <text x="68" y="292" fill="#F5F5F2" font-family="sans-serif" font-size="11" font-weight="600">Create Opportunity</text>
+  <text x="68" y="310" fill="#A5A5AE" font-family="sans-serif" font-size="10">Route by calculated grade</text>
+</svg>

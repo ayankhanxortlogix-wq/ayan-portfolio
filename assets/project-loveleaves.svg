@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" fill="none">
+  <rect width="640" height="380" fill="#121216"/>
+  <pattern id="grid-ll" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M 24 0 L 0 0 0 24" stroke="#1E1E26" stroke-width="1"/>
+  </pattern>
+  <rect width="640" height="380" fill="url(#grid-ll)"/>
+  <rect x="28" y="24" width="584" height="332" rx="14" fill="#19191F" stroke="#303038" stroke-width="1.5"/>
+  <rect x="28" y="24" width="584" height="38" rx="14" fill="#1E1E26"/>
+  <path d="M28 62H612" stroke="#303038" stroke-width="1"/>
+  <circle cx="50" cy="43" r="4.5" fill="#FF5722"/>
+  <circle cx="66" cy="43" r="4.5" fill="#303038"/>
+  <circle cx="82" cy="43" r="4.5" fill="#303038"/>
+  <text x="104" y="47" fill="#A5A5AE" font-family="monospace" font-size="11">CONCEPT // WEBINAR REGISTRATION &amp; REMINDER FUNNEL</text>
+  <!-- Step 1 -->
+  <rect x="52" y="92" width="160" height="122" rx="10" fill="#121216" stroke="#303038"/>
+  <text x="66" y="114" fill="#FF7043" font-family="monospace" font-size="10">STEP 01 // LANDING</text>
+  <rect x="66" y="128" width="132" height="18" rx="4" fill="#222229"/>
+  <rect x="66" y="152" width="132" height="18" rx="4" fill="#222229"/>
+  <rect x="66" y="178" width="132" height="22" rx="6" fill="#FF5722"/>
+  <text x="92" y="193" fill="#0B0B0D" font-family="sans-serif" font-size="10" font-weight="700">REGISTER</text>
+  <path d="M214 153H242" stroke="#FF5722" stroke-width="2"/>
+  <!-- Step 2 -->
+  <rect x="244" y="92" width="154" height="122" rx="10" fill="#121216" stroke="#FF5722" stroke-opacity="0.7"/>
+  <text x="258" y="114" fill="#FF7043" font-family="monospace" font-size="10">STEP 02 // TAG + TY</text>
+  <text x="258" y="142" fill="#F5F5F2" font-family="sans-serif" font-size="12" font-weight="600">Thank-You Page</text>
+  <rect x="258" y="156" width="122" height="22" rx="5" fill="#222229" stroke="#303038"/>
+  <text x="268" y="171" fill="#A5A5AE" font-family="monospace" font-size="9">webinar_registered</text>
+  <text x="258" y="198" fill="#73737D" font-family="sans-serif" font-size="10">Calendar Add + Confirm</text>
+  <path d="M400 153H428" stroke="#FF5722" stroke-width="2"/>
+  <!-- Step 3 -->
+  <rect x="430" y="92" width="158" height="122" rx="10" fill="#121216" stroke="#303038"/>
+  <text x="444" y="114" fill="#A5A5AE" font-family="monospace" font-size="10">STEP 03 // REMIND</text>
+  <text x="444" y="142" fill="#F5F5F2" font-family="sans-serif" font-size="12" font-weight="600">Email Sequence</text>
+  <text x="444" y="162" fill="#A5A5AE" font-family="sans-serif" font-size="10">24h · 1h · Live Link</text>
+  <text x="444" y="182" fill="#A5A5AE" font-family="sans-serif" font-size="10">Attendance Split</text>
+  <!-- Bottom Split -->
+  <rect x="52" y="236" width="536" height="90" rx="10" fill="#222229" stroke="#303038"/>
+  <text x="70" y="260" fill="#A5A5AE" font-family="monospace" font-size="10">POST-WEBINAR SEGMENTATION</text>
+  <rect x="70" y="274" width="236" height="34" rx="6" fill="#121216" stroke="#303038"/>
+  <circle cx="88" cy="291" r="4" fill="#FF5722"/>
+  <text x="102" y="295" fill="#F5F5F2" font-family="sans-serif" font-size="11">Attended -> Follow-Up Track</text>
+  <rect x="322" y="274" width="248" height="34" rx="6" fill="#121216" stroke="#303038"/>
+  <circle cx="340" cy="291" r="4" fill="#73737D"/>
+  <text x="354" y="295" fill="#A5A5AE" font-family="sans-serif" font-size="11">No-Show -> Replay Sequence</text>
+</svg>

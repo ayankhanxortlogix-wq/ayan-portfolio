@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" fill="none">
+  <rect width="640" height="380" fill="#121216"/>
+  <pattern id="grid-dn" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M 24 0 L 0 0 0 24" stroke="#1E1E26" stroke-width="1"/>
+  </pattern>
+  <rect width="640" height="380" fill="url(#grid-dn)"/>
+  <rect x="28" y="24" width="584" height="332" rx="14" fill="#19191F" stroke="#303038" stroke-width="1.5"/>
+  <rect x="28" y="24" width="584" height="38" rx="14" fill="#1E1E26"/>
+  <path d="M28 62H612" stroke="#303038" stroke-width="1"/>
+  <circle cx="50" cy="43" r="4.5" fill="#FF5722"/>
+  <circle cx="66" cy="43" r="4.5" fill="#303038"/>
+  <circle cx="82" cy="43" r="4.5" fill="#303038"/>
+  <text x="104" y="47" fill="#A5A5AE" font-family="monospace" font-size="11">CONCEPT // MULTI-CALENDAR &amp; PATIENT ASSISTANT</text>
+  <!-- Left: Round Robin Calendars -->
+  <rect x="52" y="84" width="252" height="242" rx="12" fill="#121216" stroke="#303038"/>
+  <text x="70" y="108" fill="#FF7043" font-family="monospace" font-size="10">CALENDAR ROUTING</text>
+  <rect x="70" y="124" width="216" height="52" rx="8" fill="#222229" stroke="#FF5722" stroke-opacity="0.7"/>
+  <text x="84" y="146" fill="#F5F5F2" font-family="sans-serif" font-size="12" font-weight="600">Round-Robin Booking</text>
+  <text x="84" y="163" fill="#A5A5AE" font-family="sans-serif" font-size="10">Assigns available clinic slot</text>
+  <rect x="70" y="188" width="216" height="52" rx="8" fill="#222229" stroke="#303038"/>
+  <text x="84" y="210" fill="#F5F5F2" font-family="sans-serif" font-size="12" font-weight="600">Hygiene &amp; Consults</text>
+  <text x="84" y="227" fill="#A5A5AE" font-family="sans-serif" font-size="10">Dedicated service calendars</text>
+  <rect x="70" y="252" width="216" height="52" rx="8" fill="#19191F" stroke="#303038"/>
+  <text x="84" y="274" fill="#F5F5F2" font-family="sans-serif" font-size="12" font-weight="600">Unbooked Follow-Up</text>
+  <text x="84" y="291" fill="#73737D" font-family="sans-serif" font-size="10">Triggers reminder if incomplete</text>
+  <!-- Right: Knowledge Base & Assistant -->
+  <rect x="326" y="84" width="262" height="242" rx="12" fill="#121216" stroke="#303038"/>
+  <text x="344" y="108" fill="#A5A5AE" font-family="monospace" font-size="10">DENTAL CARE ASSISTANT</text>
+  <rect x="344" y="124" width="226" height="62" rx="8" fill="#222229" stroke="#303038"/>
+  <text x="358" y="146" fill="#F5F5F2" font-family="sans-serif" font-size="11" font-weight="600">Clinic Knowledge Base</text>
+  <text x="358" y="164" fill="#A5A5AE" font-family="sans-serif" font-size="10">FAQs, hours, visit prep rules</text>
+  <rect x="344" y="200" width="180" height="36" rx="8" fill="#222229" stroke="#303038"/>
+  <text x="358" y="222" fill="#A5A5AE" font-family="sans-serif" font-size="10">Collects patient details</text>
+  <rect x="378" y="248" width="192" height="38" rx="8" fill="#FF5722" fill-opacity="0.16" stroke="#FF5722" stroke-opacity="0.5"/>
+  <text x="392" y="271" fill="#F5F5F2" font-family="sans-serif" font-size="10">Routes to open calendar slot</text>
+</svg>
