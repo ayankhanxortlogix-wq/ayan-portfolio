@@ -24,7 +24,9 @@
     <div class="intro-content">
       <div class="intro-emblem" aria-hidden="true">
         <span class="intro-ring"></span>
-        <span class="intro-monogram">AK</span>
+        <span class="intro-monogram">
+          <img src="assets/ayan-khan.webp" alt="" width="82" height="82">
+        </span>
       </div>
       <p class="intro-eyebrow mono-label">INITIALIZING DIGITAL SYSTEMS // 01S</p>
       <h2 class="intro-title">
@@ -42,10 +44,12 @@
   <!-- 1. Navigation Bar -->
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a href="#home" class="brand" aria-label="Ayan Khan Home">
-        <span class="brand-mark" aria-hidden="true">AK</span>
-        <span class="brand-name">AYAN KHAN</span>
-      </a>
+      <div class="brand">
+        <button type="button" class="brand-mark avatar-trigger" aria-label="View Ayan Khan photo">
+          <img src="assets/ayan-khan.webp" alt="Ayan Khan" width="34" height="34">
+        </button>
+        <a href="#home" class="brand-name" aria-label="Ayan Khan Home">AYAN KHAN</a>
+      </div>
 
       <nav class="desktop-nav" aria-label="Primary Navigation">
         <ul class="nav-list">
@@ -246,7 +250,9 @@
 
           <aside class="profile-card reveal" aria-label="Professional profile summary">
             <div class="profile-card-top">
-              <div class="profile-monogram" aria-hidden="true">AK</div>
+              <button type="button" class="profile-monogram avatar-trigger" aria-label="View Ayan Khan photo">
+                <img src="assets/ayan-khan.webp" alt="Ayan Khan" width="54" height="54">
+              </button>
               <div>
                 <h3 class="profile-name">Ayan Khan</h3>
                 <p class="profile-role">GoHighLevel Specialist &amp; Front-End Developer</p>
@@ -1028,10 +1034,12 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <a href="#home" class="brand" aria-label="Ayan Khan Back to Top">
-          <span class="brand-mark" aria-hidden="true">AK</span>
-          <span class="brand-name">AYAN KHAN</span>
-        </a>
+        <div class="brand">
+          <button type="button" class="brand-mark avatar-trigger" aria-label="View Ayan Khan photo">
+            <img src="assets/ayan-khan.webp" alt="Ayan Khan" width="34" height="34">
+          </button>
+          <a href="#home" class="brand-name" aria-label="Ayan Khan Back to Top">AYAN KHAN</a>
+        </div>
         <p class="footer-tagline">
           GoHighLevel Specialist &amp; Front-End Developer — building practical digital systems and responsive web experiences.
         </p>
@@ -1128,6 +1136,30 @@
             alt="HighLevel Admin Certification Certificate of Completion presented to Ayan Khan"
             width="1080"
             height="1350"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- In-Page Profile Photo Lightbox Modal -->
+  <div class="modal-backdrop" id="photo-modal" role="dialog" aria-modal="true" aria-labelledby="photo-modal-title" hidden>
+    <div class="modal-dialog photo-modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="mono-label text-accent">PROFILE PHOTO</span>
+          <h2 class="modal-title" id="photo-modal-title">Ayan Khan</h2>
+        </div>
+        <button type="button" class="modal-close" id="photo-modal-close" aria-label="Close photo viewer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="cert-modal-image-wrap photo-modal-wrap">
+          <img
+            src="assets/ayan-khan.webp"
+            alt="Ayan Khan — GoHighLevel Specialist and Front-End Developer"
           >
         </div>
       </div>

@@ -143,12 +143,19 @@ body.is-intro-active {
 }
 
 .intro-monogram {
-  font-family: var(--font-display);
-  font-size: 1.65rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--text-main);
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 87, 34, 0.55);
   animation: introFadeUp 380ms var(--ease-out) both;
+}
+
+.intro-monogram img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
 }
 
 .intro-eyebrow {
@@ -515,13 +522,28 @@ p {
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
   border-radius: 9px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  color: var(--accent);
-  font-size: 0.875rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.brand-mark img,
+.profile-monogram img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.avatar-trigger:hover {
+  border-color: var(--accent);
+  transform: scale(1.05);
 }
 
 .brand-name {
@@ -1035,16 +1057,16 @@ p {
 .profile-monogram {
   display: grid;
   place-items: center;
-  width: 54px;
-  height: 54px;
+  width: 58px;
+  height: 58px;
+  padding: 0;
   border-radius: 14px;
   background: linear-gradient(135deg, var(--bg-elevated), var(--bg-main));
-  border: 1px solid var(--accent);
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  overflow: hidden;
+  cursor: pointer;
   flex-shrink: 0;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .profile-name {
@@ -1883,8 +1905,13 @@ a.contact-channel-card:hover {
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65);
 }
 
-.cert-modal-dialog {
+.cert-modal-dialog,
+.photo-modal-dialog {
   max-width: 620px;
+}
+
+.photo-modal-dialog {
+  max-width: 520px;
 }
 
 .cert-modal-image-wrap {

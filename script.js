@@ -453,6 +453,53 @@
   }
 
   /* ------------------------------------------------------------------------
+     6C. In-Page Profile Photo Lightbox Modal
+     ------------------------------------------------------------------------ */
+  const avatarTriggers = Array.from(document.querySelectorAll(".avatar-trigger"));
+  const photoModal = document.getElementById("photo-modal");
+  const photoModalClose = document.getElementById("photo-modal-close");
+  let lastAvatarTrigger = null;
+
+  function openPhotoModal(triggerEl) {
+    if (!photoModal) return;
+    lastAvatarTrigger = triggerEl || document.activeElement;
+    photoModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    if (photoModalClose) photoModalClose.focus();
+  }
+
+  function closePhotoModal() {
+    if (!photoModal || photoModal.hidden) return;
+    photoModal.hidden = true;
+    document.body.style.overflow = "";
+    if (lastAvatarTrigger && typeof lastAvatarTrigger.focus === "function") {
+      lastAvatarTrigger.focus();
+    }
+  }
+
+  if (photoModal && avatarTriggers.length) {
+    avatarTriggers.forEach((btn) => {
+      btn.addEventListener("click", () => openPhotoModal(btn));
+    });
+
+    if (photoModalClose) {
+      photoModalClose.addEventListener("click", closePhotoModal);
+    }
+
+    photoModal.addEventListener("click", (event) => {
+      if (event.target === photoModal) {
+        closePhotoModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!photoModal.hidden && event.key === "Escape") {
+        closePhotoModal();
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------------
      7. Contact Form Validation & Web3Forms Submission
      ------------------------------------------------------------------------ */
   const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
