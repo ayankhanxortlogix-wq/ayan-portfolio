@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" fill="none">
+  <rect width="640" height="380" fill="#121216"/>
+  <pattern id="grid-gm" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M 24 0 L 0 0 0 24" stroke="#1E1E26" stroke-width="1"/>
+  </pattern>
+  <rect width="640" height="380" fill="url(#grid-gm)"/>
+  <circle cx="460" cy="180" r="125" fill="#FF5722" fill-opacity="0.08"/>
+  <rect x="28" y="24" width="584" height="332" rx="14" fill="#19191F" stroke="#303038" stroke-width="1.5"/>
+  <rect x="28" y="24" width="584" height="38" rx="14" fill="#1E1E26"/>
+  <path d="M28 62H612" stroke="#303038" stroke-width="1"/>
+  <circle cx="50" cy="43" r="4.5" fill="#FF5722"/>
+  <circle cx="66" cy="43" r="4.5" fill="#303038"/>
+  <circle cx="82" cy="43" r="4.5" fill="#303038"/>
+  <text x="104" y="47" fill="#A5A5AE" font-family="monospace" font-size="11">LIVE ARCADE // CYBER SNAKE - DATA RUNNER</text>
+  <!-- Game Arena Box -->
+  <rect x="52" y="82" width="330" height="248" rx="12" fill="#0B0B0D" stroke="#303038" stroke-width="1.5"/>
+  <!-- Snake Trail Segments -->
+  <rect x="102" y="242" width="24" height="24" rx="6" fill="#FF5722" fill-opacity="0.32"/>
+  <rect x="130" y="242" width="24" height="24" rx="6" fill="#FF5722" fill-opacity="0.45"/>
+  <rect x="158" y="242" width="24" height="24" rx="6" fill="#FF5722" fill-opacity="0.58"/>
+  <rect x="186" y="242" width="24" height="24" rx="6" fill="#FF5722" fill-opacity="0.7"/>
+  <rect x="186" y="214" width="24" height="24" rx="6" fill="#FF5722" fill-opacity="0.8"/>
+  <rect x="186" y="186" width="24" height="24" rx="6" fill="#FF5722" fill-opacity="0.88"/>
+  <rect x="214" y="186" width="24" height="24" rx="6" fill="#FF7043"/>
+  <rect x="242" y="186" width="24" height="24" rx="6" fill="#FF5722" stroke="#F5F5F2" stroke-width="1.5"/>
+  <!-- Snake Eyes -->
+  <circle cx="259" cy="193" r="2.5" fill="#0B0B0D"/>
+  <circle cx="259" cy="203" r="2.5" fill="#0B0B0D"/>
+  <!-- Glowing Data Node Target -->
+  <circle cx="326" cy="198" r="18" fill="#FF5722" fill-opacity="0.18"/>
+  <circle cx="326" cy="198" r="9" fill="#FF5722"/>
+  <circle cx="326" cy="198" r="4" fill="#F5F5F2"/>
+  <!-- Right HUD Panel -->
+  <rect x="402" y="82" width="186" height="248" rx="12" fill="#121216" stroke="#303038"/>
+  <text x="420" y="110" fill="#FF7043" font-family="monospace" font-size="10">LIVE TELEMETRY</text>
+  <rect x="420" y="124" width="150" height="52" rx="8" fill="#222229" stroke="#303038"/>
+  <text x="434" y="144" fill="#A5A5AE" font-family="monospace" font-size="9">SCORE</text>
+  <text x="434" y="165" fill="#F5F5F2" font-family="sans-serif" font-size="18" font-weight="700">120</text>
+  <rect x="420" y="188" width="150" height="52" rx="8" fill="#222229" stroke="#303038"/>
+  <text x="434" y="208" fill="#A5A5AE" font-family="monospace" font-size="9">CONTROLS</text>
+  <text x="434" y="226" fill="#F5F5F2" font-family="sans-serif" font-size="11">Arrows / WASD / Touch</text>
+  <rect x="420" y="256" width="150" height="44" rx="8" fill="#FF5722"/>
+  <text x="458" y="283" fill="#0B0B0D" font-family="sans-serif" font-size="12" font-weight="700">PLAY NOW</text>
+</svg>

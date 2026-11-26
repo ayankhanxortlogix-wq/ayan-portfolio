@@ -508,6 +508,7 @@
           <button type="button" class="filter-btn" data-filter="crm">CRM &amp; Pipelines</button>
           <button type="button" class="filter-btn" data-filter="funnels">Funnels &amp; Calendars</button>
           <button type="button" class="filter-btn" data-filter="ecommerce">E-Commerce &amp; Memberships</button>
+          <button type="button" class="filter-btn" data-filter="games">Interactive Game</button>
         </div>
 
         <div class="projects-grid" id="projects-grid">
@@ -721,6 +722,46 @@
               <div class="project-footer">
                 <button type="button" class="btn-link view-project-btn" data-project="apex">
                   View Project
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 7: Playable Cyber Snake Game -->
+          <article class="project-card project-card-featured reveal" data-category="games">
+            <div class="project-thumb">
+              <img
+                src="assets/project-game.svg"
+                alt="Preview of Cyber Snake Data Runner interactive HTML5 Canvas game built with Vanilla JavaScript"
+                loading="lazy"
+                width="640"
+                height="380"
+              >
+              <span class="project-badge project-badge-live">Live Playable Game</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="mono-label text-accent">HTML5 CANVAS &amp; VANILLA JS</span>
+                <span class="mono-label">PROJECT 07</span>
+              </div>
+              <h3 class="project-title">Cyber Snake &mdash; Data Runner</h3>
+              <p class="project-desc">
+                A real-time playable arcade game built from scratch with HTML5 Canvas and Vanilla JavaScript. Collect glowing data nodes, choose speed modes, beat your saved high score, and play with keyboard arrows, WASD, swipe gestures, or touch controls.
+              </p>
+              <ul class="tag-list">
+                <li class="tag-pill">HTML5 Canvas</li>
+                <li class="tag-pill">Vanilla JavaScript</li>
+                <li class="tag-pill">Game Loop</li>
+                <li class="tag-pill">Touch &amp; Keyboard</li>
+              </ul>
+              <div class="project-footer project-footer-actions">
+                <button type="button" class="btn btn-primary btn-sm" id="play-game-btn">
+                  Play Live Game
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                </button>
+                <button type="button" class="btn-link view-project-btn" data-project="cybersnake">
+                  View Details
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                 </button>
               </div>
@@ -1161,6 +1202,64 @@
             src="assets/ayan-khan.webp"
             alt="Ayan Khan — GoHighLevel Specialist and Front-End Developer"
           >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Playable Cyber Snake Game Modal -->
+  <div class="modal-backdrop" id="game-modal" role="dialog" aria-modal="true" aria-labelledby="game-modal-title" hidden>
+    <div class="modal-dialog game-modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="mono-label text-accent">INTERACTIVE ARCADE // HTML5 CANVAS</span>
+          <h2 class="modal-title" id="game-modal-title">Cyber Snake &mdash; Data Runner</h2>
+        </div>
+        <button type="button" class="modal-close" id="game-modal-close" aria-label="Close game">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="modal-body game-modal-body">
+        <div class="game-hud">
+          <div class="game-stat">
+            <span class="mono-label">SCORE</span>
+            <strong class="game-stat-val" id="game-score">0</strong>
+          </div>
+          <div class="game-stat">
+            <span class="mono-label">BEST</span>
+            <strong class="game-stat-val text-accent" id="game-best">0</strong>
+          </div>
+          <div class="game-controls-top">
+            <label for="game-speed" class="sr-only">Game Speed</label>
+            <select id="game-speed" class="game-speed-select" aria-label="Select game speed">
+              <option value="125">Normal</option>
+              <option value="85">Fast</option>
+              <option value="60">Turbo</option>
+            </select>
+            <button type="button" class="btn btn-secondary btn-sm" id="game-pause-btn">Pause</button>
+          </div>
+        </div>
+
+        <div class="game-stage">
+          <canvas id="snake-canvas" width="400" height="400" aria-label="Cyber Snake game board"></canvas>
+          <div class="game-overlay" id="game-overlay">
+            <span class="mono-label text-accent" id="game-overlay-tag">SYSTEM READY</span>
+            <h3 class="game-overlay-title" id="game-overlay-title">Collect Data Nodes</h3>
+            <p class="game-overlay-sub" id="game-overlay-sub">
+              Use Arrow Keys / WASD on desktop or swipe &amp; D-pad buttons below on mobile.
+            </p>
+            <button type="button" class="btn btn-primary" id="game-start-btn">Start Game</button>
+          </div>
+        </div>
+
+        <div class="game-dpad" aria-label="Touch directional controls">
+          <button type="button" class="dpad-btn dpad-up" data-dir="up" aria-label="Move up">&#9650;</button>
+          <div class="dpad-mid">
+            <button type="button" class="dpad-btn" data-dir="left" aria-label="Move left">&#9664;</button>
+            <button type="button" class="dpad-btn" data-dir="down" aria-label="Move down">&#9660;</button>
+            <button type="button" class="dpad-btn" data-dir="right" aria-label="Move right">&#9654;</button>
+          </div>
         </div>
       </div>
     </div>

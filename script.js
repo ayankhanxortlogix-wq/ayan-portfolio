@@ -327,6 +327,24 @@
         "Automated opportunity creation and conditional workflow branching"
       ],
       tags: ["GoHighLevel", "Surveys", "Scoring Logic", "Math Operations", "Conditional Workflows", "Funnels"]
+    },
+    cybersnake: {
+      title: "Cyber Snake — Data Runner",
+      category: "Interactive HTML5 Canvas Game",
+      classification: "Personal Front-End JavaScript Build",
+      image: "assets/project-game.svg",
+      alt: "Cyber Snake Data Runner HTML5 Canvas game preview",
+      context:
+        "An interactive browser arcade game built directly inside this portfolio to demonstrate real-time Vanilla JavaScript game logic, state management, responsive canvas rendering, and touch-friendly controls.",
+      role:
+        "Designed and coded the complete 20x20 grid game engine, input direction queue, collision checks, localStorage high-score persistence, speed selector, and mobile swipe/D-pad controls.",
+      features: [
+        "Real-time 20x20 HTML5 Canvas rendering loop",
+        "Direction input queue preventing accidental 180-degree self-reversal",
+        "Keyboard (Arrows / WASD / Space), touch swipe, and on-screen D-pad controls",
+        "Persistent Best Score saved locally in the browser"
+      ],
+      tags: ["HTML5 Canvas", "Vanilla JavaScript", "Game Loop", "Responsive Controls"]
     }
   };
 
@@ -495,6 +513,356 @@
     document.addEventListener("keydown", (event) => {
       if (!photoModal.hidden && event.key === "Escape") {
         closePhotoModal();
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------------
+     6D. Playable Cyber Snake Game Engine & Modal
+     ------------------------------------------------------------------------ */
+  const playGameBtn = document.getElementById("play-game-btn");
+  const gameModal = document.getElementById("game-modal");
+  const gameModalClose = document.getElementById("game-modal-close");
+  const gameCanvas = document.getElementById("snake-canvas");
+  const gameScoreEl = document.getElementById("game-score");
+  const gameBestEl = document.getElementById("game-best");
+  const gameSpeedEl = document.getElementById("game-speed");
+  const gamePauseBtn = document.getElementById("game-pause-btn");
+  const gameOverlay = document.getElementById("game-overlay");
+  const gameOverlayTag = document.getElementById("game-overlay-tag");
+  const gameOverlayTitle = document.getElementById("game-overlay-title");
+  const gameOverlaySub = document.getElementById("game-overlay-sub");
+  const gameStartBtn = document.getElementById("game-start-btn");
+  const dpadBtns = Array.from(document.querySelectorAll(".dpad-btn"));
+
+  if (gameModal && gameCanvas && gameCanvas.getContext) {
+    const ctx = gameCanvas.getContext("2d");
+    const GRID = 20;
+    const CELL = gameCanvas.width / GRID;
+    const BEST_KEY = "ayan_cyber_snake_best";
+
+    let snake = [];
+    let dir = { x: 1, y: 0 };
+    let inputQueue = [];
+    let food = { x: 14, y: 10 };
+    let score = 0;
+    let bestScore = Number(localStorage.getItem(BEST_KEY) || 0);
+    let isRunning = false;
+    let isPaused = false;
+    let rafId = null;
+    let lastTick = 0;
+    let touchStart = null;
+
+    if (gameBestEl) gameBestEl.textContent = String(bestScore);
+
+    function spawnFood() {
+      const occupied = new Set(snake.map((s) => `${s.x},${s.y}`));
+      const freeCells = [];
+      for (let y = 0; y < GRID; y++) {
+        for (let x = 0; x < GRID; x++) {
+          if (!occupied.has(`${x},${y}`)) freeCells.push({ x, y });
+        }
+      }
+      if (freeCells.length === 0) return null;
+      return freeCells[Math.floor(Math.random() * freeCells.length)];
+    }
+
+    function drawBoard() {
+      ctx.fillStyle = "#0B0B0D";
+      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+
+      ctx.strokeStyle = "#17171E";
+      ctx.lineWidth = 1;
+      for (let i = 1; i < GRID; i++) {
+        const pos = i * CELL;
+        ctx.beginPath();
+        ctx.moveTo(pos, 0);
+        ctx.lineTo(pos, gameCanvas.height);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, pos);
+        ctx.lineTo(gameCanvas.width, pos);
+        ctx.stroke();
+      }
+
+      if (food) {
+        const fx = food.x * CELL + CELL / 2;
+        const fy = food.y * CELL + CELL / 2;
+        ctx.fillStyle = "rgba(255, 87, 34, 0.25)";
+        ctx.beginPath();
+        ctx.arc(fx, fy, CELL * 0.48, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#FF5722";
+        ctx.beginPath();
+        ctx.arc(fx, fy, CELL * 0.3, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#F5F5F2";
+        ctx.beginPath();
+        ctx.arc(fx, fy, CELL * 0.12, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      snake.forEach((seg, idx) => {
+        const pad = 2;
+        const x = seg.x * CELL + pad;
+        const y = seg.y * CELL + pad;
+        const size = CELL - pad * 2;
+        const isHead = idx === 0;
+        const alpha = Math.max(0.35, 1 - idx * 0.035);
+
+        ctx.fillStyle = isHead ? "#FF5722" : `rgba(255, 112, 67, ${alpha.toFixed(2)})`;
+        ctx.beginPath();
+        if (typeof ctx.roundRect === "function") {
+          ctx.roundRect(x, y, size, size, 5);
+        } else {
+          ctx.rect(x, y, size, size);
+        }
+        ctx.fill();
+
+        if (isHead) {
+          ctx.strokeStyle = "#F5F5F2";
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        }
+      });
+    }
+
+    function resetGameState() {
+      snake = [
+        { x: 8, y: 10 },
+        { x: 7, y: 10 },
+        { x: 6, y: 10 }
+      ];
+      dir = { x: 1, y: 0 };
+      inputQueue = [];
+      score = 0;
+      food = spawnFood();
+      if (gameScoreEl) gameScoreEl.textContent = "0";
+      drawBoard();
+    }
+
+    function showOverlay(tag, title, sub, btnLabel) {
+      if (gameOverlayTag) gameOverlayTag.textContent = tag;
+      if (gameOverlayTitle) gameOverlayTitle.textContent = title;
+      if (gameOverlaySub) gameOverlaySub.textContent = sub;
+      if (gameStartBtn) gameStartBtn.textContent = btnLabel;
+      if (gameOverlay) gameOverlay.hidden = false;
+    }
+
+    function endGame(won) {
+      isRunning = false;
+      isPaused = false;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      if (gamePauseBtn) gamePauseBtn.textContent = "Pause";
+      showOverlay(
+        won ? "GRID CLEARED" : "CONNECTION LOST",
+        won ? `Perfect Run — ${score} pts!` : `Game Over — Score: ${score}`,
+        `Best score: ${bestScore}. Ready for another run?`,
+        "Play Again"
+      );
+    }
+
+    function stepGame() {
+      if (inputQueue.length > 0) {
+        dir = inputQueue.shift();
+      }
+
+      const head = snake[0];
+      const next = { x: head.x + dir.x, y: head.y + dir.y };
+
+      const hitWall = next.x < 0 || next.x >= GRID || next.y < 0 || next.y >= GRID;
+      const willEat = food && next.x === food.x && next.y === food.y;
+      const bodyToCheck = willEat ? snake : snake.slice(0, -1);
+      const hitSelf = bodyToCheck.some((seg) => seg.x === next.x && seg.y === next.y);
+
+      if (hitWall || hitSelf) {
+        endGame(false);
+        return;
+      }
+
+      snake.unshift(next);
+
+      if (willEat) {
+        score += 10;
+        if (gameScoreEl) gameScoreEl.textContent = String(score);
+        if (score > bestScore) {
+          bestScore = score;
+          localStorage.setItem(BEST_KEY, String(bestScore));
+          if (gameBestEl) gameBestEl.textContent = String(bestScore);
+        }
+        food = spawnFood();
+        if (!food) {
+          drawBoard();
+          endGame(true);
+          return;
+        }
+      } else {
+        snake.pop();
+      }
+
+      drawBoard();
+    }
+
+    function gameLoop(timestamp) {
+      if (!isRunning || isPaused || gameModal.hidden) return;
+      const interval = gameSpeedEl ? Number(gameSpeedEl.value) : 125;
+      if (timestamp - lastTick >= interval) {
+        lastTick = timestamp;
+        stepGame();
+      }
+      if (isRunning && !isPaused) {
+        rafId = requestAnimationFrame(gameLoop);
+      }
+    }
+
+    function startGame() {
+      resetGameState();
+      isRunning = true;
+      isPaused = false;
+      if (gamePauseBtn) gamePauseBtn.textContent = "Pause";
+      if (gameOverlay) gameOverlay.hidden = true;
+      lastTick = performance.now();
+      rafId = requestAnimationFrame(gameLoop);
+    }
+
+    function togglePause() {
+      if (!isRunning) return;
+      isPaused = !isPaused;
+      if (gamePauseBtn) gamePauseBtn.textContent = isPaused ? "Resume" : "Pause";
+      if (isPaused) {
+        showOverlay("PAUSED", "Game Paused", "Press Space or click Resume to continue.", "Resume");
+      } else {
+        if (gameOverlay) gameOverlay.hidden = true;
+        lastTick = performance.now();
+        rafId = requestAnimationFrame(gameLoop);
+      }
+    }
+
+    function queueDirection(name) {
+      const map = {
+        up: { x: 0, y: -1 },
+        down: { x: 0, y: 1 },
+        left: { x: -1, y: 0 },
+        right: { x: 1, y: 0 }
+      };
+      const candidate = map[name];
+      if (!candidate || !isRunning || isPaused) return;
+      const latest = inputQueue.length > 0 ? inputQueue[inputQueue.length - 1] : dir;
+      if (candidate.x === -latest.x && candidate.y === -latest.y) return;
+      if (candidate.x === latest.x && candidate.y === latest.y) return;
+      if (inputQueue.length < 2) inputQueue.push(candidate);
+    }
+
+    function openGameModal() {
+      gameModal.hidden = false;
+      document.body.style.overflow = "hidden";
+      resetGameState();
+      showOverlay(
+        "SYSTEM READY",
+        "Collect Data Nodes",
+        "Use Arrow Keys / WASD on desktop or swipe & D-pad buttons below on mobile.",
+        "Start Game"
+      );
+      if (gameStartBtn) gameStartBtn.focus();
+    }
+
+    function closeGameModal() {
+      if (gameModal.hidden) return;
+      isRunning = false;
+      isPaused = false;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      gameModal.hidden = true;
+      document.body.style.overflow = "";
+      if (playGameBtn) playGameBtn.focus();
+    }
+
+    if (playGameBtn) {
+      playGameBtn.addEventListener("click", openGameModal);
+    }
+
+    if (gameModalClose) {
+      gameModalClose.addEventListener("click", closeGameModal);
+    }
+
+    gameModal.addEventListener("click", (event) => {
+      if (event.target === gameModal) closeGameModal();
+    });
+
+    if (gameStartBtn) {
+      gameStartBtn.addEventListener("click", () => {
+        if (isPaused) {
+          togglePause();
+        } else {
+          startGame();
+        }
+      });
+    }
+
+    if (gamePauseBtn) {
+      gamePauseBtn.addEventListener("click", togglePause);
+    }
+
+    dpadBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (!isRunning) startGame();
+        queueDirection(btn.getAttribute("data-dir"));
+      });
+    });
+
+    gameCanvas.addEventListener("touchstart", (e) => {
+      if (e.touches.length !== 1) return;
+      touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }, { passive: true });
+
+    gameCanvas.addEventListener("touchmove", (e) => {
+      if (!touchStart || e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - touchStart.x;
+      const dy = e.touches[0].clientY - touchStart.y;
+      if (Math.abs(dx) < 22 && Math.abs(dy) < 22) return;
+      if (Math.abs(dx) > Math.abs(dy)) {
+        queueDirection(dx > 0 ? "right" : "left");
+      } else {
+        queueDirection(dy > 0 ? "down" : "up");
+      }
+      touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }, { passive: true });
+
+    document.addEventListener("keydown", (event) => {
+      if (gameModal.hidden) return;
+      if (event.key === "Escape") {
+        closeGameModal();
+        return;
+      }
+      const keyMap = {
+        ArrowUp: "up",
+        w: "up",
+        W: "up",
+        ArrowDown: "down",
+        s: "down",
+        S: "down",
+        ArrowLeft: "left",
+        a: "left",
+        A: "left",
+        ArrowRight: "right",
+        d: "right",
+        D: "right"
+      };
+      if (keyMap[event.key]) {
+        event.preventDefault();
+        if (!isRunning) startGame();
+        queueDirection(keyMap[event.key]);
+      } else if (event.key === " ") {
+        event.preventDefault();
+        if (isRunning) togglePause();
+        else startGame();
       }
     });
   }
