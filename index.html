@@ -14,8 +14,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <noscript><style>.intro-loader { display: none !important; }</style></noscript>
 </head>
-<body>
+<body class="is-intro-active">
+  <!-- 1-Second Black Welcome Intro Screen -->
+  <div class="intro-loader" id="intro-loader" role="status" aria-live="polite" aria-label="Welcome to Ayan Web intro animation">
+    <div class="intro-grid-bg" aria-hidden="true"></div>
+    <div class="intro-glow" aria-hidden="true"></div>
+    <div class="intro-content">
+      <div class="intro-emblem" aria-hidden="true">
+        <span class="intro-ring"></span>
+        <span class="intro-monogram">AK</span>
+      </div>
+      <p class="intro-eyebrow mono-label">INITIALIZING DIGITAL SYSTEMS // 01S</p>
+      <h2 class="intro-title">
+        WELCOME TO <span class="text-accent">AYAN WEB</span>
+      </h2>
+      <div class="intro-progress-track" aria-hidden="true">
+        <span class="intro-progress-fill"></span>
+      </div>
+      <button type="button" class="intro-skip" id="intro-skip">Skip Intro</button>
+    </div>
+  </div>
+
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <!-- 1. Navigation Bar -->
@@ -700,6 +721,29 @@
             </div>
           </article>
         </div>
+
+        <!-- Verified Certification Spotlight -->
+        <aside class="cert-card reveal" aria-label="Verified GoHighLevel Certification">
+          <div class="cert-card-main">
+            <div class="cert-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+            </div>
+            <div class="cert-info">
+              <span class="mono-label text-accent">VERIFIED CREDENTIAL // GOHIGHLEVEL</span>
+              <h3 class="cert-title">HighLevel Admin Certification</h3>
+              <p class="card-text">
+                Recognized for hands-on GoHighLevel administration — building structured CRM pipelines, conditional workflows, funnels, and automated customer journeys. Thank you, Ayan, for consistently turning business requirements into dependable digital systems.
+              </p>
+            </div>
+          </div>
+
+          <div class="cert-card-action">
+            <button type="button" class="btn btn-primary" id="view-cert-btn">
+              View Certificate
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -1059,6 +1103,32 @@
             <h3 class="modal-block-title">Tools &amp; Skills Applied</h3>
             <ul class="tag-list" id="modal-tags"></ul>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- In-Page Certificate Viewer Modal -->
+  <div class="modal-backdrop" id="cert-modal" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title" hidden>
+    <div class="modal-dialog cert-modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="mono-label text-accent">GOHIGHLEVEL UNIVERSITY // CREDENTIAL</span>
+          <h2 class="modal-title" id="cert-modal-title">HighLevel Admin Certification</h2>
+        </div>
+        <button type="button" class="modal-close" id="cert-modal-close" aria-label="Close certificate viewer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="cert-modal-image-wrap">
+          <img
+            src="assets/highlevel-certificate.png"
+            alt="HighLevel Admin Certification Certificate of Completion presented to Ayan Khan"
+            width="1080"
+            height="1350"
+          >
         </div>
       </div>
     </div>

@@ -10,6 +10,31 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ------------------------------------------------------------------------
+     0. 1-Second Black Welcome Intro Splash
+     ------------------------------------------------------------------------ */
+  const introLoader = document.getElementById("intro-loader");
+  const introSkipBtn = document.getElementById("intro-skip");
+
+  function dismissIntro() {
+    if (!introLoader || introLoader.classList.contains("is-leaving")) return;
+    introLoader.classList.add("is-leaving");
+    introLoader.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-intro-active");
+  }
+
+  if (introLoader) {
+    const introTimer = window.setTimeout(dismissIntro, 1000);
+    if (introSkipBtn) {
+      introSkipBtn.addEventListener("click", () => {
+        window.clearTimeout(introTimer);
+        dismissIntro();
+      });
+    }
+  } else {
+    document.body.classList.remove("is-intro-active");
+  }
+
+  /* ------------------------------------------------------------------------
      1. Sticky Header & Scroll-Spy Navigation
      ------------------------------------------------------------------------ */
   const header = document.getElementById("site-header");
@@ -382,6 +407,47 @@
     document.addEventListener("keydown", (event) => {
       if (!modal.hidden && event.key === "Escape") {
         closeProjectModal();
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------------
+     6B. In-Page Certificate Viewer Modal
+     ------------------------------------------------------------------------ */
+  const viewCertBtn = document.getElementById("view-cert-btn");
+  const certModal = document.getElementById("cert-modal");
+  const certModalClose = document.getElementById("cert-modal-close");
+
+  function openCertModal() {
+    if (!certModal) return;
+    certModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    if (certModalClose) certModalClose.focus();
+  }
+
+  function closeCertModal() {
+    if (!certModal || certModal.hidden) return;
+    certModal.hidden = true;
+    document.body.style.overflow = "";
+    if (viewCertBtn) viewCertBtn.focus();
+  }
+
+  if (viewCertBtn && certModal) {
+    viewCertBtn.addEventListener("click", openCertModal);
+
+    if (certModalClose) {
+      certModalClose.addEventListener("click", closeCertModal);
+    }
+
+    certModal.addEventListener("click", (event) => {
+      if (event.target === certModal) {
+        closeCertModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!certModal.hidden && event.key === "Escape") {
+        closeCertModal();
       }
     });
   }
