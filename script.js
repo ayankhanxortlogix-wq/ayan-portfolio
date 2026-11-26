@@ -382,14 +382,18 @@
   }
 
   /* ------------------------------------------------------------------------
-     7. Contact Form Validation & Inquiry Preparation
+     7. Contact Form Validation & Web3Forms Submission
      ------------------------------------------------------------------------ */
+  const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+  const WEB3FORMS_ACCESS_KEY = "aa6f0b59-5f03-4c9e-b2ea-3328b2f2f89f";
+
   const contactForm = document.getElementById("contact-form");
   const nameInput = document.getElementById("contact-name");
   const emailInput = document.getElementById("contact-email");
   const topicInput = document.getElementById("contact-topic");
   const messageInput = document.getElementById("contact-message");
   const formFeedback = document.getElementById("form-feedback");
+  const submitBtn = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
 
   const errorEls = {
     name: document.getElementById("error-name"),
@@ -403,6 +407,23 @@
     input.classList.toggle("is-invalid", Boolean(message));
     input.setAttribute("aria-invalid", message ? "true" : "false");
     errorEl.textContent = message || "";
+  }
+
+  function showFormFeedback(isError, titleText, detailText) {
+    if (!formFeedback) return;
+    formFeedback.classList.toggle("is-error", isError);
+    formFeedback.innerHTML = "";
+
+    const title = document.createElement("strong");
+    title.textContent = titleText;
+
+    const desc = document.createElement("p");
+    desc.style.marginTop = "6px";
+    desc.textContent = detailText;
+
+    formFeedback.appendChild(title);
+    formFeedback.appendChild(desc);
+    formFeedback.hidden = false;
   }
 
   function validateEmail(value) {
@@ -457,64 +478,61 @@
       });
     });
 
-    contactForm.addEventListener("submit", (event) => {
+    contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       if (!validateContactForm()) {
-        formFeedback.hidden = true;
+        if (formFeedback) formFeedback.hidden = true;
         const firstInvalid = contactForm.querySelector(".is-invalid");
         if (firstInvalid) firstInvalid.focus();
         return;
       }
 
-      const formattedSummary =
-        `Name: ${nameInput.value.trim()}\n` +
-        `Email: ${emailInput.value.trim()}\n` +
-        `Focus: ${topicInput.value.trim()}\n` +
-        `Details: ${messageInput.value.trim()}`;
+      const formData = new FormData(contactForm);
+      if (!formData.get("access_key")) {
+        formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+      }
 
-      formFeedback.innerHTML = "";
-      const title = document.createElement("strong");
-      title.textContent = "Inquiry validated and ready.";
+      const originalText = submitBtn ? submitBtn.textContent : "Send Message";
+      if (submitBtn) {
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+      }
+      if (formFeedback) formFeedback.hidden = true;
 
-      const desc = document.createElement("p");
-      desc.style.marginTop = "6px";
-      desc.textContent =
-        "This static portfolio validates your message locally (no external backend endpoint is connected yet). You can copy your formatted brief below to send directly once contact channels are linked.";
+      try {
+        const response = await fetch(WEB3FORMS_ENDPOINT, {
+          method: "POST",
+          body: formData
+        });
+        const data = await response.json();
 
-      const actions = document.createElement("div");
-      actions.className = "form-feedback-actions";
-
-      const copyBtn = document.createElement("button");
-      copyBtn.type = "button";
-      copyBtn.className = "btn btn-secondary btn-sm";
-      copyBtn.textContent = "Copy Inquiry Brief";
-      copyBtn.addEventListener("click", () => {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(formattedSummary).then(() => {
-            copyBtn.textContent = "Copied to Clipboard";
-          });
+        if (response.ok && data.success !== false) {
+          showFormFeedback(
+            false,
+            "Message sent successfully.",
+            "Thank you for reaching out. Your inquiry has been delivered and Ayan will review it shortly."
+          );
+          contactForm.reset();
         } else {
-          copyBtn.textContent = "Clipboard unavailable";
+          showFormFeedback(
+            true,
+            "Unable to send message.",
+            data && data.message ? data.message : "Please verify your details and try again."
+          );
         }
-      });
-
-      const resetBtn = document.createElement("button");
-      resetBtn.type = "button";
-      resetBtn.className = "btn btn-secondary btn-sm";
-      resetBtn.textContent = "Clear Form";
-      resetBtn.addEventListener("click", () => {
-        contactForm.reset();
-        formFeedback.hidden = true;
-      });
-
-      actions.appendChild(copyBtn);
-      actions.appendChild(resetBtn);
-
-      formFeedback.appendChild(title);
-      formFeedback.appendChild(desc);
-      formFeedback.appendChild(actions);
-      formFeedback.hidden = false;
+      } catch (error) {
+        showFormFeedback(
+          true,
+          "Network error while sending.",
+          "Something went wrong connecting to the form service. Please check your connection and try again."
+        );
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
+      }
     });
   }
 })();

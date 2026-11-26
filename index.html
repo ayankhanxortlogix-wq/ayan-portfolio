@@ -803,16 +803,20 @@
                 <li>Responsive websites, landing pages &amp; front-end UI with HTML/CSS/JS</li>
               </ul>
               <div class="contact-note">
-                <span class="mono-label text-accent">DIRECT LINKS NOTICE</span>
+                <span class="mono-label text-accent">DIRECT INQUIRIES</span>
                 <p class="card-text">
-                  Direct email, LinkedIn, and GitHub links can be added here once confirmed for public release. In the meantime, use the validated inquiry form to compose and copy your project brief.
+                  Send your inquiry directly through this form. Additional public links (such as LinkedIn or GitHub) can be added here once confirmed for release.
                 </p>
               </div>
             </div>
           </div>
 
           <div class="contact-form-wrap reveal">
-            <form class="contact-form" id="contact-form" novalidate>
+            <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+              <input type="hidden" name="access_key" value="aa6f0b59-5f03-4c9e-b2ea-3328b2f2f89f">
+              <input type="hidden" name="subject" value="New Portfolio Inquiry — Ayan Khan">
+              <input type="hidden" name="from_name" value="Ayan Khan Portfolio">
+              <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="form-group">
                 <label for="contact-name" class="form-label">Full Name <span class="text-accent" aria-hidden="true">*</span></label>
                 <input
@@ -876,8 +880,8 @@
               </div>
 
               <div class="form-actions">
-                <button type="submit" class="btn btn-primary btn-full">
-                  Validate &amp; Prepare Message
+                <button type="submit" class="btn btn-primary btn-full" id="contact-submit">
+                  Send Message
                 </button>
               </div>
 

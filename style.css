@@ -1381,6 +1381,13 @@ p {
   color: var(--error);
 }
 
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .form-feedback {
   padding: 16px;
   border-radius: var(--radius-btn);
@@ -1388,6 +1395,11 @@ p {
   border: 1px solid rgba(52, 211, 153, 0.4);
   font-size: 0.9rem;
   color: var(--text-main);
+}
+
+.form-feedback.is-error {
+  background-color: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.45);
 }
 
 .form-feedback-actions {
