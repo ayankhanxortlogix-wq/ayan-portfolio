@@ -52,10 +52,12 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 20px);
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
+  max-width: 100%;
   background-color: var(--bg-main);
   color: var(--text-main);
   font-family: var(--font-body);
@@ -64,6 +66,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
+}
+
+main {
+  overflow-x: clip;
+}
+
+.hero-content,
+.hero-visual,
+.about-narrative,
+.profile-card,
+.expertise-card,
+.skill-panel,
+.frontend-cards,
+.frontend-preview,
+.project-card,
+.process-card,
+.experience-card,
+.exp-pillar,
+.lab-visual-frame,
+.lab-content,
+.contact-intro,
+.contact-form-wrap {
+  min-width: 0;
+  max-width: 100%;
 }
 
 body.is-intro-active {
@@ -965,6 +991,7 @@ p {
 
 .code-snippet {
   margin: 0;
+  max-width: 100%;
   padding: 12px 14px;
   border-radius: 10px;
   background-color: var(--bg-secondary);
@@ -972,6 +999,8 @@ p {
   font-family: var(--font-mono);
   font-size: 0.74rem;
   line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
   overflow-x: auto;
 }
 
@@ -2060,13 +2089,13 @@ a.contact-channel-card:hover {
   .frontend-layout,
   .contact-grid,
   .skills-split {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .expertise-grid,
   .experience-pillars,
   .lab-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -2127,7 +2156,7 @@ a.contact-channel-card:hover {
   .projects-grid,
   .process-grid,
   .modal-meta-bar {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .workflow-wires {
