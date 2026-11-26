@@ -1316,14 +1316,6 @@ p {
   border-color: rgba(255, 87, 34, 0.55);
 }
 
-.lab-row-reverse .lab-visual-frame {
-  order: 2;
-}
-
-.lab-row-reverse .lab-content {
-  order: 1;
-}
-
 .lab-visual-frame {
   border-radius: var(--radius-card);
   background-color: var(--bg-main);
@@ -1784,11 +1776,6 @@ a.contact-channel-card:hover {
   .experience-pillars,
   .lab-row {
     grid-template-columns: 1fr;
-  }
-
-  .lab-row-reverse .lab-visual-frame,
-  .lab-row-reverse .lab-content {
-    order: initial;
   }
 }
 
