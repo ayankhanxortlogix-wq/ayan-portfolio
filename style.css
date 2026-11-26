@@ -1287,6 +1287,112 @@ p {
 }
 
 /* ==========================================================================
+   9B. Systems & Cyber Terminal Lab
+   ========================================================================== */
+.systems-lab-section {
+  background-image: radial-gradient(rgba(165, 165, 174, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.lab-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.lab-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 32px;
+  align-items: center;
+  padding: 26px;
+  border-radius: var(--radius-panel);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: border-color var(--transition-fast);
+}
+
+.lab-row:hover {
+  border-color: rgba(255, 87, 34, 0.55);
+}
+
+.lab-row-reverse .lab-visual-frame {
+  order: 2;
+}
+
+.lab-row-reverse .lab-content {
+  order: 1;
+}
+
+.lab-visual-frame {
+  border-radius: var(--radius-card);
+  background-color: var(--bg-main);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+}
+
+.lab-frame-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 16px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.lab-visual-frame img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 420ms var(--ease-out);
+}
+
+.lab-row:hover .lab-visual-frame img {
+  transform: scale(1.025);
+}
+
+.lab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lab-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  font-weight: 600;
+  line-height: 1.22;
+  color: var(--text-main);
+}
+
+.lab-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.lab-terminal-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+.lab-terminal-cmd {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-main);
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================================================
    10. Contact Section
    ========================================================================== */
 .contact-grid {
@@ -1675,8 +1781,14 @@ a.contact-channel-card:hover {
   }
 
   .expertise-grid,
-  .experience-pillars {
+  .experience-pillars,
+  .lab-row {
     grid-template-columns: 1fr;
+  }
+
+  .lab-row-reverse .lab-visual-frame,
+  .lab-row-reverse .lab-content {
+    order: initial;
   }
 }
 

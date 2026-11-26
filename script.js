@@ -31,8 +31,13 @@
       }
     }
 
-    // Map frontend-skills under the "Skills" top nav link
-    const mappedId = currentId === "frontend-skills" ? "ghl-skills" : currentId;
+    // Map sub-sections under their closest top nav link
+    let mappedId = currentId;
+    if (currentId === "frontend-skills") {
+      mappedId = "ghl-skills";
+    } else if (currentId === "systems-lab") {
+      mappedId = "experience";
+    }
 
     navLinks.forEach((link) => {
       const target = link.getAttribute("href").replace("#", "");
